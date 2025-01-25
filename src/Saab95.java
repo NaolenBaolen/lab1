@@ -18,9 +18,7 @@ public class Saab95{
         stopEngine();
     }
     
-    public int getNrDoors(){
-        return nrDoors;
-    }
+    public int getNrDoors(){return nrDoors;}
     public double getEnginePower(){
         return enginePower;
     }

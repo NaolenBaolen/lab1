@@ -1,8 +1,10 @@
 import java.awt.*;
 
-public class Saab95 extends Vehicle implements SpeedHandeling{
+public class Saab95 extends Vehicle implements SpeedHandeling, Movable{
 
     public boolean turboOn;
+    private Direction direction;
+    private enum Direction{UP, DOWN, RIGHT, LEFT};
     //public int nrDoors; // Number of doors on the car
     //public double enginePower; // Engine power of the car
     //public double currentSpeed; // The current speed of the car
@@ -15,6 +17,7 @@ public class Saab95 extends Vehicle implements SpeedHandeling{
         //color = Color.red;
         //enginePower = 125;
         turboOn = false;
+        this.direction = Direction.UP;
         //modelName = "Saab95";
         //stopEngine();
     }
@@ -42,6 +45,37 @@ public class Saab95 extends Vehicle implements SpeedHandeling{
     public void decrementSpeed(double amount){
         setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
+
+    @Override
+    public void move(){
+        switch(direction) {
+            case UP -> y += getCurrentSpeed();
+            case DOWN -> y -= getCurrentSpeed();
+            case LEFT -> x -= getCurrentSpeed();
+            case RIGHT -> x += getCurrentSpeed();
+        }
+    }
+
+    @Override
+    public void turnLeft(){
+        switch(direction) {
+            case UP -> direction = Direction.LEFT;
+            case LEFT -> direction = Direction.DOWN;
+            case DOWN -> direction = Direction.RIGHT;
+            case RIGHT -> direction = Direction.UP;
+        }
+    }
+
+    @Override
+    public void turnRight(){
+        switch(direction){
+            case UP -> direction = Direction.RIGHT;
+            case LEFT -> direction = Direction.DOWN;
+            case DOWN -> direction = Direction.LEFT;
+            case RIGHT -> direction = Direction.UP;
+        }
+    }
+
     // TODO fix this method according to lab pm
     public void gas(double amount){
         incrementSpeed(amount);

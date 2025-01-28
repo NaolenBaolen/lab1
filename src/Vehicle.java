@@ -8,8 +8,8 @@ public abstract class Vehicle {
     private final String modelName;
 
     //position and direction
-    private double x;
-    private double y;
+    protected double x;
+    protected double y;
     protected int direction; //direction car is facing (0 = up, 1 = right, 2 = down, 3 = left)
 
     public Vehicle (int nDoors, double enginePower, Color color, String modelName){

@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Volvo240 extends Car implements SpeedHandeling, Movable{
+public class Volvo240 extends Vehicle implements Movable{
 
     public final static double trimFactor = 1.25;    //specific for volvo hence it get to stay
 //    public int nrDoors; // Number of doors on the car
@@ -53,11 +53,11 @@ public class Volvo240 extends Car implements SpeedHandeling, Movable{
 
     @Override
     public void turnLeft() {
-
+        direction = (direction + 3) % 4;
     }
 
     @Override
     public void turnRight() {
-
+        direction = (direction + 1 ) % 4;
     }
 }

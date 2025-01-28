@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95 extends Car implements SpeedHandeling{
+public class Saab95 extends Vehicle implements SpeedHandeling{
 
     public boolean turboOn;
     //public int nrDoors; // Number of doors on the car

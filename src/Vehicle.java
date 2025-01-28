@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Car {
+public abstract class Vehicle {
     private final int nDoors;
     private final double enginePower;
     private double currentSpeed;
@@ -10,9 +10,9 @@ public class Car {
     //position and direction
     private double x;
     private double y;
-    private double angle; //direction car is facing in degrees
+    protected int direction; //direction car is facing (0 = up, 1 = right, 2 = down, 3 = left)
 
-    public Car (int nDoors, double enginePower, Color color, String modelName){
+    public Vehicle (int nDoors, double enginePower, Color color, String modelName){
         this.nDoors = nDoors;
         this.enginePower = enginePower;
         this.color = color;
@@ -20,7 +20,7 @@ public class Car {
 
         this.x = 0; //initial position
         this.y = 0;
-        this.angle = 0;
+        this.direction = 0;
 
         stopEngine();
     }
@@ -43,6 +43,17 @@ public class Car {
 
     public void stopEngine(){currentSpeed = 0;}
 
+
+    //Abstract speedhandling methods
+
+    public abstract void incrementSpeed(double amount);
+
+    public abstract void decrementSpeed(double amount);
+
+    public abstract double speedFactor();
+
+
+    //dont know what to do with you....
     public void gas(double amount){
         //delegate this implementation to the subclass
     }

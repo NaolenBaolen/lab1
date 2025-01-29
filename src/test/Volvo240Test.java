@@ -27,36 +27,42 @@ class Volvo240Test {
         assertEquals(1.25, volvo.speedFactor(), 0.01); //factor = enginePower * 0.01 * trimFactor
     }
 
-    @Test
-    void incrementSpeed() {
-    }
-
-    @Test
-    void decrementSpeed() {
-    }
 
    @Test
-    public void moveAndTurn(){
+    public void move(){
         Volvo240 volvo = new Volvo240();
 
         volvo.startEngine();
         volvo.gas(1.0); //add some speed
         volvo.move();           //move it in the default position which is up
 
-        assertEquals("(0.0, 1.35)", volvo.getPosition());    //see so the position is correct
+        assertEquals("(0.0, 1.35)", volvo.getPosition());    //see so the position is correct (and indirectly incrementSpeed)
 
-       //test turning left
-       volvo.turnLeft(); //turn from up to left = LEFT
-       assertEquals(Vehicle.Direction.LEFT , volvo.getDirection());
+       volvo.brake(1.0); //test break and indirectly decrement speed
+       assertEquals(0.1, volvo.getCurrentSpeed(), 0.1); //should go back to original speed.
+   }
 
-       //test turning right
-       volvo.turnRight(); //right from left = UP
-       assertEquals(Vehicle.Direction.UP , volvo.getDirection());
+   @Test
+    public void turnRL(){
+        Volvo240 volvo = new Volvo240();
+        volvo.startEngine();
+        volvo.gas(1.0);
 
-       //turn left 2 times = DOWN
-       volvo.turnLeft();
-       volvo.turnLeft();
-       assertEquals(Vehicle.Direction.DOWN, volvo.getDirection());
+        //test left turn from default = LEFT
+        volvo.turnLeft();
+        assertEquals(Vehicle.Direction.LEFT, volvo.getDirection());
+
+        //left from left = DOWN
+        volvo.turnLeft();
+        assertEquals(Vehicle.Direction.DOWN, volvo.getDirection());
+
+        //right from down = LEFT
+       volvo.turnRight();
+       assertEquals(Vehicle.Direction.LEFT, volvo.getDirection());
+
+       //right from left = UP
+       volvo.turnRight();
+       assertEquals(Vehicle.Direction.UP, volvo.getDirection());
 
    }
 }

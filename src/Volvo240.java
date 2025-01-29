@@ -70,9 +70,9 @@ public class Volvo240 extends Vehicle implements Movable{
     public void turnRight(){
         switch(direction){
             case UP -> direction = Volvo240.Direction.RIGHT;
-            case LEFT -> direction = Volvo240.Direction.DOWN;
+            case RIGHT -> direction = Volvo240.Direction.DOWN;
             case DOWN -> direction = Volvo240.Direction.LEFT;
-            case RIGHT -> direction = Volvo240.Direction.UP;
+            case LEFT -> direction = Volvo240.Direction.UP;
         }
     }
 }

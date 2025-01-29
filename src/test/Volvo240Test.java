@@ -42,9 +42,21 @@ class Volvo240Test {
         volvo.startEngine();
         volvo.gas(1.0); //add some speed
         volvo.move();           //move it in the default position which is up
-        assertEquals("(0.0, 0.1", volvo.getPosition());    //see so the position is correct
 
-       //TODO add tests for turn left and right
+        assertEquals("(0.0, 1.35)", volvo.getPosition());    //see so the position is correct
+
+       //test turning left
+       volvo.turnLeft(); //turn from up to left = LEFT
+       assertEquals(Vehicle.Direction.LEFT , volvo.getDirection());
+
+       //test turning right
+       volvo.turnRight(); //right from left = UP
+       assertEquals(Vehicle.Direction.UP , volvo.getDirection());
+
+       //turn left 2 times = DOWN
+       volvo.turnLeft();
+       volvo.turnLeft();
+       assertEquals(Vehicle.Direction.DOWN, volvo.getDirection());
 
    }
 }

@@ -12,7 +12,7 @@ public class Saab95Test {
     }
     @Test
     void testCurrentSpeedInRange(){
-        vehicle.gas(0.5); //Control the speed
+        vehicle.gas(126); //Control the speed
         double currentSpeed = vehicle.getCurrentSpeed();
         //speed can only be in the range [0,enginePower]
         assertTrue(currentSpeed >= 0 && currentSpeed <= vehicle.getEnginePower());
@@ -20,14 +20,14 @@ public class Saab95Test {
     @Test
     void testGasGiveCorrectChangeOffSpeed(){
         double initialSpeed = vehicle.getCurrentSpeed();
-        vehicle.gas(0.7);
+        vehicle.gas(-0.1);
         double currentSpeed = vehicle.getCurrentSpeed();
         assertTrue(initialSpeed <= currentSpeed, "The speed can not be reducing when gas");
     }
     @Test
     void testBrakeGiveCorrectChangeOffSpeed(){
         double initialSpeed = vehicle.getCurrentSpeed();
-        vehicle.brake(0.7);
+        vehicle.brake(-0.2);
         double currentSpeed = vehicle.getCurrentSpeed();
         assertTrue(initialSpeed >= currentSpeed, "The speed can not be increasing when braking");
     }

@@ -19,6 +19,7 @@ public class Saab95Test {
     }
     @Test
     void testGasGiveCorrectChangeOffSpeed(){
+        vehicle.gas(0.5);
         double initialSpeed = vehicle.getCurrentSpeed();
         vehicle.gas(-0.1);
         double currentSpeed = vehicle.getCurrentSpeed();
@@ -34,14 +35,14 @@ public class Saab95Test {
     @Test
     void testGasWithValidAmount() {
         //Only accepts values in the range [0,1]
-        assertThrows(IllegalAccessError.class, () -> vehicle.gas(-0.1));
-        assertThrows(IllegalAccessError.class, () -> vehicle.gas(1.1));
+        assertThrows(IllegalArgumentException.class, () -> vehicle.gas(-0.1));
+        assertThrows(IllegalArgumentException.class, () -> vehicle.gas(1.1));
     }
 
     @Test
     void testBrakeWithValidAmount() {
         //Only accepts values in the range [0,1]
-        assertThrows(IllegalAccessError.class, () -> vehicle.brake(-0.1));
-        assertThrows(IllegalAccessError.class, () -> vehicle.brake(1.1));
+        assertThrows(IllegalArgumentException.class, () -> vehicle.brake(-0.1));
+        assertThrows(IllegalArgumentException.class, () -> vehicle.brake(1.1));
     }
 }

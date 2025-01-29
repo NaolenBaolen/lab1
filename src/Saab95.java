@@ -15,7 +15,7 @@ public class Saab95 extends Vehicle implements Movable{
         //color = Color.red;
         //enginePower = 125;
         turboOn = false;
-        this.direction = Direction.UP;
+       // this.direction = Direction.UP;
         //modelName = "Saab95";
         //stopEngine();
     }

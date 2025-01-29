@@ -34,7 +34,13 @@ public abstract class Vehicle {
     public double getCurrentSpeed() {return currentSpeed;}
 
     public void setCurrentSpeed(double currentSpeed){
-        this.currentSpeed = currentSpeed;
+        if (currentSpeed < 0){
+            this.currentSpeed = 0;
+        }else if (currentSpeed > enginePower){
+            this.currentSpeed = enginePower;
+        }else {
+            this.currentSpeed = currentSpeed;
+        }
     }
 
     public Color getColor() {return color;}
@@ -54,15 +60,9 @@ public abstract class Vehicle {
 
     public abstract double speedFactor();
 
+    public abstract void gas(double amount);
 
-    //dont know what to do with you....
-    public void gas(double amount){
-        //delegate this implementation to the subclass (make abstract?)
-    }
-
-    public void brake(double amount){
-        //delegate this implementation to the subclass (make abstract?)
-    }
+    public abstract void brake(double amount);
 
     //Position handling
 

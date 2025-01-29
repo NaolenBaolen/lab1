@@ -10,7 +10,9 @@ public abstract class Vehicle {
     //position and direction
     protected double x;
     protected double y;
-    protected int direction; //direction car is facing (0 = up, 1 = right, 2 = down, 3 = left)
+    protected Direction direction; //direction car is facing (0 = up, 1 = right, 2 = down, 3 = left)
+
+    public enum Direction {UP, DOWN, RIGHT, LEFT}
 
     public Vehicle (int nDoors, double enginePower, Color color, String modelName){
         this.nDoors = nDoors;
@@ -20,7 +22,7 @@ public abstract class Vehicle {
 
         this.x = 0; //initial position
         this.y = 0;
-        this.direction = 0;
+        this.direction = Direction.UP;
 
         stopEngine();
     }
@@ -55,11 +57,16 @@ public abstract class Vehicle {
 
     //dont know what to do with you....
     public void gas(double amount){
-        //delegate this implementation to the subclass
+        //delegate this implementation to the subclass (make abstract?)
     }
 
     public void brake(double amount){
-        //delegate this implementation to the subclass
+        //delegate this implementation to the subclass (make abstract?)
     }
 
+    //Position handling
+
+    public String getPosition(){return "(" + x + ", "+ y + ")";}
+
+    public Direction getDirection() {return direction;}
 }

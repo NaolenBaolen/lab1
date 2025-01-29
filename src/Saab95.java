@@ -1,10 +1,8 @@
 import java.awt.*;
 
-public class Saab95 extends Vehicle implements SpeedHandeling, Movable{
+public class Saab95 extends Vehicle implements Movable{
 
     public boolean turboOn;
-    private Direction direction;
-    private enum Direction{UP, DOWN, RIGHT, LEFT};
     //public int nrDoors; // Number of doors on the car
     //public double enginePower; // Engine power of the car
     //public double currentSpeed; // The current speed of the car
@@ -17,7 +15,7 @@ public class Saab95 extends Vehicle implements SpeedHandeling, Movable{
         //color = Color.red;
         //enginePower = 125;
         turboOn = false;
-        this.direction = Direction.UP;
+       // this.direction = Direction.UP;
         //modelName = "Saab95";
         //stopEngine();
     }

@@ -3,8 +3,6 @@ import java.awt.*;
 public class Volvo240 extends Vehicle implements Movable{
 
     public final static double trimFactor = 1.25;    //specific for volvo hence it get to stay
-    private Volvo240.Direction direction;
-    private enum Direction{UP, DOWN, RIGHT, LEFT};
 //    public int nrDoors; // Number of doors on the car
 //    public double enginePower; // Engine power of the car
 //    public double currentSpeed; // The current speed of the car
@@ -72,9 +70,9 @@ public class Volvo240 extends Vehicle implements Movable{
     public void turnRight(){
         switch(direction){
             case UP -> direction = Volvo240.Direction.RIGHT;
-            case LEFT -> direction = Volvo240.Direction.DOWN;
+            case RIGHT -> direction = Volvo240.Direction.DOWN;
             case DOWN -> direction = Volvo240.Direction.LEFT;
-            case RIGHT -> direction = Volvo240.Direction.UP;
+            case LEFT -> direction = Volvo240.Direction.UP;
         }
     }
 }

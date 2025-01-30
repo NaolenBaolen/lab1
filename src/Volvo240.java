@@ -3,19 +3,7 @@ import java.awt.*;
 public class Volvo240 extends Vehicle implements Movable{
 
     private final static double trimFactor = 1.25;    //specific for volvo hence it get to stay
-//    public int nrDoors; // Number of doors on the car
-//    public double enginePower; // Engine power of the car
-//    public double currentSpeed; // The current speed of the car
-//    public Color color; // Color of the car
-//    public String modelName; // The car model name
-    
-//    public Volvo240(){
-//        nrDoors = 4;
-//        color = Color.black;
-//        enginePower = 100;
-//        modelName = "Volvo240";
-//        stopEngine();
-//    }
+
     public Volvo240(){
         super(4, 100, Color.black, "Volvo240");
     }
@@ -36,7 +24,7 @@ public class Volvo240 extends Vehicle implements Movable{
         setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
 
-    // TODO fix this method according to lab pm
+
     public void gas(double amount){
         if (amount < 0 || amount > 1){
             throw new IllegalArgumentException("Gas has to be in range 0 - 1!");
@@ -44,7 +32,7 @@ public class Volvo240 extends Vehicle implements Movable{
         incrementSpeed(amount);
     }
 
-    // TODO fix this method according to lab pm
+
     public void brake(double amount){
         if (amount < 0 || amount > 1){
             throw new IllegalArgumentException("Brake has to be in range 0 - 1!");

@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Movable {
     private final int nDoors;
     private final double enginePower;
     private double currentSpeed;
@@ -77,6 +77,7 @@ public abstract class Vehicle {
         decrementSpeed(amount);
     }
 
+    @Override
     public void move(){
         switch(direction) {
             case UP -> y += getCurrentSpeed();
@@ -85,6 +86,7 @@ public abstract class Vehicle {
             case RIGHT -> x += getCurrentSpeed();
         }
     }
+    @Override
     public void turnRight(){
         switch(direction){
             case UP -> direction = Direction.RIGHT;
@@ -93,6 +95,8 @@ public abstract class Vehicle {
             case LEFT -> direction = Direction.UP;
         }
     }
+
+    @Override
     public void turnLeft(){
         switch(direction) {
             case UP -> direction = Direction.LEFT;

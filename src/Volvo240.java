@@ -24,14 +24,12 @@ public class Volvo240 extends Vehicle implements Movable{
         setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
 
-
     public void gas(double amount){
         if (amount < 0 || amount > 1){
             throw new IllegalArgumentException("Gas has to be in range 0 - 1!");
         }
         incrementSpeed(amount);
     }
-
 
     public void brake(double amount){
         if (amount < 0 || amount > 1){

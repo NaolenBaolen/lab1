@@ -76,6 +76,7 @@ public abstract class Vehicle {
         }
         decrementSpeed(amount);
     }
+
     public void move(){
         switch(direction) {
             case UP -> y += getCurrentSpeed();
@@ -87,9 +88,9 @@ public abstract class Vehicle {
     public void turnRight(){
         switch(direction){
             case UP -> direction = Direction.RIGHT;
-            case LEFT -> direction = Direction.DOWN;
+            case RIGHT -> direction = Direction.DOWN;
             case DOWN -> direction = Direction.LEFT;
-            case RIGHT -> direction = Direction.UP;
+            case LEFT -> direction = Direction.UP;
         }
     }
     public void turnLeft(){

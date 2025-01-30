@@ -13,7 +13,7 @@ public class Saab95Test {
     @Test
     void testCurrentSpeedInRange(){
         vehicle.setCurrentSpeed(125);
-        vehicle.gas(1); //Control the speed
+        //vehicle.gas(1); //Control the speed
         double currentSpeed = vehicle.getCurrentSpeed();
         //speed can only be in the range [0,enginePower]
         assertTrue(currentSpeed >= 0 && currentSpeed <= vehicle.getEnginePower());

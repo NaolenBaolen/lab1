@@ -8,9 +8,9 @@ public abstract class Vehicle {
     private final String modelName;
 
     //position and direction
-    protected double x;
-    protected double y;
-    protected Direction direction; //direction car is facing (0 = up, 1 = right, 2 = down, 3 = left)
+    private double x;
+    private double y;
+    private Direction direction; //direction car is facing (0 = up, 1 = right, 2 = down, 3 = left)
 
     public enum Direction {UP, DOWN, RIGHT, LEFT}
 
@@ -53,16 +53,53 @@ public abstract class Vehicle {
 
 
     //Abstract speedhandling methods
+    public void incrementSpeed(double amount){
+        setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
+    }
 
-    public abstract void incrementSpeed(double amount);
-
-    public abstract void decrementSpeed(double amount);
+    public void decrementSpeed(double amount){
+        setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
+    }
 
     public abstract double speedFactor();
 
-    public abstract void gas(double amount);
+    public void gas(double amount){
+        if (amount < 0 || amount > 1 ){
+            throw new IllegalArgumentException("Gas has to be in range 0 - 1!");
+        }
+        incrementSpeed(amount);
+    }
 
-    public abstract void brake(double amount);
+    public void brake(double amount){
+        if (amount < 0 || amount > 1){
+            throw new IllegalArgumentException("Brake has to be in range 0 - 1!");
+        }
+        decrementSpeed(amount);
+    }
+    public void move(){
+        switch(direction) {
+            case UP -> y += getCurrentSpeed();
+            case DOWN -> y -= getCurrentSpeed();
+            case LEFT -> x -= getCurrentSpeed();
+            case RIGHT -> x += getCurrentSpeed();
+        }
+    }
+    public void turnRight(){
+        switch(direction){
+            case UP -> direction = Direction.RIGHT;
+            case LEFT -> direction = Direction.DOWN;
+            case DOWN -> direction = Direction.LEFT;
+            case RIGHT -> direction = Direction.UP;
+        }
+    }
+    public void turnLeft(){
+        switch(direction) {
+            case UP -> direction = Direction.LEFT;
+            case LEFT -> direction = Direction.DOWN;
+            case DOWN -> direction = Direction.RIGHT;
+            case RIGHT -> direction = Direction.UP;
+        }
+    }
 
     //Position handling
 

@@ -9,16 +9,21 @@ public abstract class TruckVehicle extends Vehicle{
         this.bedRaised = true;  //bed raised means we can move
     }
 
+    @Override
+    public double speedFactor(){        //maybe tweak to fit a trucks speedfactor, override if different trucks needs different speedfactors
+        return getEnginePower() * 0.01;
+    }
+
     //implemented differently in Scania and Transport (Maybe make one general or interface?? pros and cons??)
     public abstract void raiseBed();
     public abstract void lowerBed();
 
     @Override
     public void move(){
-        if(!bedRaised){
-            throw new IllegalArgumentException ("Cant move with bed lowered"); //TODO maybe not throw ArgumentException here... but something needs to happen when we try to move but bed is lowered
-        }else {
+        if(bedRaised){
             super.move();
+        }else {
+            throw new IllegalArgumentException ("Cant move with bed lowered"); //TODO maybe not throw ArgumentException here... but something needs to happen when we try to move but bed is lowered
         }
     }
 }

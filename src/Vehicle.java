@@ -6,6 +6,8 @@ public abstract class Vehicle implements Movable {
     private double currentSpeed;
     private Color color;
     private final String modelName;
+    //add a is on transport boolean? set to false and when vehicles are on transport turn true. And make sure in load function that TruckVehivles can not go on transport?
+
 
     //position and direction
     private double x;

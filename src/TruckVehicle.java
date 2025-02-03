@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public abstract class TruckVehicle extends Vehicle{
-    //If both trucks should have angle on their beds, implement here and make transport raiseBed = al the way up and Scania arbitrary degrees.
+    //TODO If both trucks should have angle on their beds, implement here and make transport raiseBed = al the way up and Scania arbitrary degrees.
     //if not, implement angle in Scania subclass and up or down in Transport
     protected boolean bedRaised;
     protected double bedAngle;
@@ -13,13 +13,13 @@ public abstract class TruckVehicle extends Vehicle{
     }
 
     @Override
-    public double speedFactor(){        //maybe tweak to fit a trucks speedfactor, override if different trucks needs different speedfactors
+    public double speedFactor(){        //TODO maybe tweak to fit a trucks speedfactor, override if different trucks needs different speedfactors
         return getEnginePower() * 0.01;
     }
 
     public double getBedAngle(){ return bedAngle;}
 
-    //implemented differently in Scania and Transport (Maybe make one general or interface?? pros and cons??)
+    //implemented differently in Scania and Transport (Maybe make one general or interface if we have a lot of raisable and lowerable things ?? pros and cons??)
     public abstract void raiseBed();
     public abstract void lowerBed();
 

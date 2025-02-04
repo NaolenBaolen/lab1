@@ -16,14 +16,16 @@ public class Transporter extends TruckVehicle implements Loadable<Vehicle>{
     @Override
     public void load(Vehicle vehicle) {
         if(bedRaised && !fullTransport() && inProximity(vehicle)){
-
+            vehicleCollection.add(vehicle);
+        } else{
+            System.out.print("Not able to load, check ramp, capacity and so vehicle is in proximity");
         }
     }
 
     @Override
     public void unload() {
         if(bedRaised && !vehicleCollection.isEmpty()){
-            Vehicle vehicle = vehicleCollection.removeFirst();
+            Vehicle vehicle = vehicleCollection.removeLast();
             //position again??
         }else{
             System.out.print("Ramp has to be down to unload vehicles");

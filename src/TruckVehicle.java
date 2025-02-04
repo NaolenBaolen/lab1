@@ -24,7 +24,7 @@ public abstract class TruckVehicle extends Vehicle{
         return getCurrentSpeed() > 0;
     }
 
-    //implemented differently in Scania and Transport (Maybe make one general or interface if we have a lot of raisable and lowerable things ?? pros and cons??)
+    //CHANGE, two interfaces OR vvv depending on what we want
     //make lower and raise by a factor and each subclass have different factor!!!!
     public abstract void raiseBed();
     public abstract void lowerBed();

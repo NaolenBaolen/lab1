@@ -1,3 +1,4 @@
 public interface Loadable {
-    //interface for all the loadable things (implement on Transport first of all), boats, Transports, boxes whatever
+    public void load(Vehicle vehicle);
+    public void unload();
 }

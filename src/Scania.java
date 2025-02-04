@@ -12,8 +12,8 @@ public class Scania extends TruckVehicle {
         if(isMoving()){
             System.out.print("Can not raise while moving");
         }else{
-            bedAngle = Math.min(bedAngle + amount, 70);
-            bedRaised = bedAngle > 0;   //bedRaisaed = true for all values except 0
+            setBedAngle(Math.min(getBedAngle() + amount, 70));
+            bedRaised = getBedAngle() > 0;   //bedRaisaed = true for all values except 0
         }
     }
 
@@ -21,8 +21,8 @@ public class Scania extends TruckVehicle {
         if(isMoving()){
             System.out.print("Can not lower while moving");
         } else{
-            bedAngle = Math.max(bedAngle - amount, 0);
-            bedRaised = bedAngle > 0;
+            setBedAngle(Math.max(getBedAngle() - amount, 0));
+            bedRaised = getBedAngle() > 0;
         }
     }
 }

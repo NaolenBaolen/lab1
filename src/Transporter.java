@@ -5,10 +5,11 @@ public class Transporter extends TruckVehicle implements Loadable<Vehicle>{
 
     private static final double minDist = 5.0; //minimum distance vehicles can be from transport to be able to load
     private static final int maxCap = 5; // maximum capacity for transport
-    private LinkedList<Vehicle> vehicleCollection = new LinkedList<>();
+    private LinkedList<Vehicle> vehicleCollection;
 
     public Transporter(){
         super(2, 150, Color.black, "Transporter");
+        this.vehicleCollection = new LinkedList<>();
     }
 
 

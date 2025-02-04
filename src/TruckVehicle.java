@@ -2,7 +2,7 @@ import java.awt.*;
 
 public abstract class TruckVehicle extends Vehicle{
     protected boolean bedRaised;
-    protected double bedAngle;
+    private double bedAngle;
 
     public TruckVehicle (int nDoors, double enginePower, Color clr, String modelName){
         super (nDoors, enginePower, clr, modelName);
@@ -16,6 +16,8 @@ public abstract class TruckVehicle extends Vehicle{
     }
 
     public double getBedAngle(){ return bedAngle;}
+
+    public void setBedAngle(double bedAngle) {this.bedAngle = bedAngle;}
 
     public boolean isMoving(){
         return getCurrentSpeed() > 0;

@@ -1,4 +1,4 @@
-public interface Loadable {
-    public void load(Vehicle vehicle);
+public interface Loadable<T> {
+    public void load(T load);
     public void unload();
 }

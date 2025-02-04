@@ -113,4 +113,7 @@ public abstract class Vehicle implements Movable {
     public String getPosition(){return "(" + x + ", "+ y + ")";}
 
     public Direction getDirection() {return direction;}
+
+    public double getX() {return x;}
+    public double getY() {return y;}
 }

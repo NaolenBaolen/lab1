@@ -19,7 +19,7 @@ public abstract class TruckVehicle extends Vehicle{
 
     public double getBedAngle(){ return bedAngle;}
 
-    //potentially use in raise and lower bed methods so that raise and lower does not occur if "isMoving == true"
+    //use in raise and lower bed methods so that raise and lower does not occur if "isMoving == true"
     public boolean isMoving(){
         return getCurrentSpeed() > 0;
     }

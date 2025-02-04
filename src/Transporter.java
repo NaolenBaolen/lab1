@@ -12,10 +12,10 @@ public class Transporter extends TruckVehicle implements Loadable<Vehicle>{
     }
 
 
-
+//instanceOf is not very scaleable, works for now (implement method to check if a certain vehicle can be loaded or not)
     @Override
     public void load(Vehicle vehicle) {
-        if(bedRaised && !fullTransport() && inProximity(vehicle)){
+        if(bedRaised && !fullTransport() && inProximity(vehicle) && !(vehicle instanceof TruckVehicle)){
             vehicleCollection.add(vehicle);
         } else{
             System.out.print("Not able to load, check ramp, capacity and so vehicle is in proximity");

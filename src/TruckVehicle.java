@@ -1,8 +1,6 @@
 import java.awt.*;
 
 public abstract class TruckVehicle extends Vehicle{
-    //TODO If both trucks should have angle on their beds, implement here and make transport raiseBed = al the way up and Scania arbitrary degrees.
-    //if not, implement angle in Scania subclass and up or down in Transport
     protected boolean bedRaised;
     protected double bedAngle;
 
@@ -19,7 +17,6 @@ public abstract class TruckVehicle extends Vehicle{
 
     public double getBedAngle(){ return bedAngle;}
 
-    //use in raise and lower bed methods so that raise and lower does not occur if "isMoving == true"
     public boolean isMoving(){
         return getCurrentSpeed() > 0;
     }

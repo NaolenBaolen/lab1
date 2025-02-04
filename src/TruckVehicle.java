@@ -25,6 +25,7 @@ public abstract class TruckVehicle extends Vehicle{
     }
 
     //implemented differently in Scania and Transport (Maybe make one general or interface if we have a lot of raisable and lowerable things ?? pros and cons??)
+    //make lower and raise by a factor and each subclass have different factor!!!!
     public abstract void raiseBed();
     public abstract void lowerBed();
 

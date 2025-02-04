@@ -3,17 +3,17 @@ import java.awt.*;
 public class Scania extends TruckVehicle {
 
     public Scania(){
-        super(2, 150, Color.BLUE, "Scania");
+        super(2, 150, Color.blue, "Scania");
     }
 
-    //Has to be a more clean way to  implement raise and lower bed (instead of overloading methods)
+    //Has to be a more clean way to  implement raise and lower bed (instead of overloading methods)... well not really
     @Override
     public void raiseBed() {
         if(isMoving()){
             System.out.print("Can not raise while moving");
         }else{
             bedAngle = Math.min(bedAngle + 10, 70);
-            bedRaised = (bedAngle == 70);
+            bedRaised = bedAngle > 0;
         }
     }
 

@@ -24,10 +24,23 @@ public abstract class TruckVehicle extends Vehicle{
         return getCurrentSpeed() > 0;
     }
 
-    //CHANGE, two interfaces OR vvv depending on what we want
-    //make lower and raise by a factor and each subclass have different factor!!!!
-    public abstract void raiseBed();
-    public abstract void lowerBed();
+
+    public void raiseBed(){
+        if(isMoving()){
+            System.out.print("Can not raise while moving");
+        } else{
+            bedAngle = 70;
+            bedRaised = true;
+        }
+    }
+    public void lowerBed(){
+        if(isMoving()){
+            System.out.print("Can not lower while moving");
+        } else{
+            bedAngle = 0;
+            bedRaised = false;
+        }
+    }
 
 
     @Override
@@ -35,8 +48,7 @@ public abstract class TruckVehicle extends Vehicle{
         if(!bedRaised){
             super.move();
         }else {
-            throw new IllegalArgumentException ("Cant move with bed raised"); //TODO maybe not throw ArgumentException here... but something needs to happen when we try to move but bed is lowered
-            //System.out.print("cant move with bed raised") <- might be better
+            System.out.print("cant move with bed raised");
         }
     }
 }

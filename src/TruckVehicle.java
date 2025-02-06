@@ -4,8 +4,8 @@ public abstract class TruckVehicle extends Vehicle{
     protected boolean bedRaised;
     private double bedAngle;
 
-    public TruckVehicle (int nDoors, double enginePower, Color clr, String modelName){
-        super (nDoors, enginePower, clr, modelName);
+    public TruckVehicle (int nDoors, double enginePower, Color clr, String modelName, Weight weight){
+        super (nDoors, enginePower, clr, modelName, weight);
         this.bedRaised = false;   //bed raised means we can not move (angle = 70)
         this.bedAngle = 0;
     }
@@ -18,10 +18,6 @@ public abstract class TruckVehicle extends Vehicle{
     public double getBedAngle(){ return bedAngle;}
 
     public void setBedAngle(double bedAngle) {this.bedAngle = bedAngle;}
-
-    public boolean isMoving(){
-        return getCurrentSpeed() > 0;
-    }
 
 
     public void raiseBed(){

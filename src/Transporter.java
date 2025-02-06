@@ -8,15 +8,15 @@ public class Transporter extends TruckVehicle implements Loadable<Vehicle>{
     private LinkedList<Vehicle> vehicleCollection;
 
     public Transporter(){
-        super(2, 150, Color.black, "Transporter");
+        super(2, 150, Color.black, "Transporter", Weight.MEDIUM);
         this.vehicleCollection = new LinkedList<>();
     }
 
 
-//instanceOf is not very scaleable, works for now (implement method to check if a certain vehicle can be loaded or not)
+    //better way to determine what can and can not be loaded??
     @Override
     public void load(Vehicle vehicle) {
-        if(bedRaised && !fullTransport() && inProximity(vehicle) && !(vehicle instanceof TruckVehicle)){
+        if(bedRaised && !full() && inProximity(vehicle) && vehicle.getWeight() == Weight.LIGHT){
             vehicleCollection.add(vehicle);
         } else{
             System.out.print("Not able to load, check ramp, capacity and so vehicle is in proximity");
@@ -27,14 +27,14 @@ public class Transporter extends TruckVehicle implements Loadable<Vehicle>{
     public void unload() {
         if(bedRaised && !vehicleCollection.isEmpty()){
             Vehicle vehicle = vehicleCollection.removeLast();
-            //position again??
         }else{
             System.out.print("Ramp has to be down to unload vehicles");
         }
     }
 
-    //Loading/unloading conditions
-    private boolean fullTransport(){
+    //Loading/unloading conditions (TODO put in interface??)
+
+    public boolean full(){
         return vehicleCollection.size() >= maxCap;
     }
 

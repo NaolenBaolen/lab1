@@ -6,8 +6,7 @@ public abstract class Vehicle implements Movable {
     private double currentSpeed;
     private Color color;
     private final String modelName;
-    //add a is on transport boolean? set to false and when vehicles are on transport turn true. And make sure in load function that TruckVehivles can not go on transport?
-
+    private final Weight weight;
 
     //position and direction
     private double x;
@@ -15,8 +14,9 @@ public abstract class Vehicle implements Movable {
     private Direction direction; //direction car is facing (0 = up, 1 = right, 2 = down, 3 = left)
 
     public enum Direction {UP, DOWN, RIGHT, LEFT}
+    public enum Weight {LIGHT, MEDIUM, HEAVY}
 
-    public Vehicle (int nDoors, double enginePower, Color color, String modelName){
+    public Vehicle (int nDoors, double enginePower, Color color, String modelName, Weight weight){
         this.nDoors = nDoors;
         this.enginePower = enginePower;
         this.color = color;
@@ -25,6 +25,8 @@ public abstract class Vehicle implements Movable {
         this.x = 0; //initial position
         this.y = 0;
         this.direction = Direction.UP;
+
+        this.weight = weight;     //add a weight when creating new vehicle
 
         stopEngine();
     }
@@ -47,14 +49,15 @@ public abstract class Vehicle implements Movable {
 
     public Color getColor() {return color;}
 
-    public void serColor(Color clr){this.color = clr;}
+    public void setColor(Color clr){this.color = clr;}
 
     public void startEngine(){ currentSpeed = 0.1;}
 
     public void stopEngine(){currentSpeed = 0;}
 
+    public Weight getWeight(){return weight;}
 
-    //Abstract speedhandling methods
+    //Speedhandling methods
     public void incrementSpeed(double amount){
         setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
     }
@@ -79,6 +82,9 @@ public abstract class Vehicle implements Movable {
         decrementSpeed(amount);
     }
 
+    public boolean isMoving(){ return getCurrentSpeed() > 0; }
+
+    //Move functionality
     @Override
     public void move(){
         switch(direction) {
@@ -114,6 +120,8 @@ public abstract class Vehicle implements Movable {
 
     public Direction getDirection() {return direction;}
 
+    public void setX(double amount) { x = amount;}
+    public void setY(double amount) {y = amount;}
     public double getX() {return x;}
     public double getY() {return y;}
 }

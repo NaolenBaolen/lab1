@@ -14,7 +14,7 @@ public class TransporterV2 extends Vehicle implements truckBed, Loadable<Vehicle
         this.vehicleCollection = new LinkedList<>();
     }
 
-    public boolean isBedRaised(){return bedRaised;}               //only for testing
+    public boolean isBedRaised(){return bedRaised;}               //only for testing (MIGHT CHANGE, we dont want to implement code only for testing)
     public int collectionSize(){return vehicleCollection.size();} // ----||-----
     public boolean collectionContains(Vehicle vehicle){return vehicleCollection.contains(vehicle);}
 

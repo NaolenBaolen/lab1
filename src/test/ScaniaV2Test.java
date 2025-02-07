@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ScaniaV2Test {
-    private Scania vehicle;
+    private ScaniaV2 vehicle;
 
     @BeforeEach
     public void setup(){
-        vehicle = new Scania();
+        vehicle = new ScaniaV2();
     }
     @Test
     void getBedAngleChanges(){

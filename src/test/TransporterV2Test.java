@@ -7,14 +7,14 @@ class TransporterV2Test {
     private TransporterV2 transporter;
     private Volvo240 vehicle1;
     private Saab95 vehicle2;
-    private Scania heavyVehicle;
+    private ScaniaV2 heavyVehicle;
 
     @BeforeEach
     public void setup(){
         transporter = new TransporterV2();
         vehicle1 = new Volvo240();
         vehicle2 = new Saab95();
-        heavyVehicle = new Scania();
+        heavyVehicle = new ScaniaV2();
     }
 
     @Test

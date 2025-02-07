@@ -5,7 +5,7 @@ public class ScaniaV2 extends Vehicle implements truckBed {
     private boolean bedRaised;
 
     public ScaniaV2() {
-        super(2, 120, Color.black, "Scania", Weight.LIGHT);
+        super(2, 120, Color.black, "Scania", Weight.MEDIUM);
         this.bedAngle = 0;
         this.bedRaised = false;
     }

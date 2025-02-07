@@ -55,6 +55,8 @@ public abstract class Vehicle implements Movable {
 
     public void stopEngine(){currentSpeed = 0;}
 
+    public String getModelName() {return modelName;}
+
     public Weight getWeight(){return weight;}
 
     //Speedhandling methods

@@ -14,8 +14,8 @@ public class TransporterV2 extends Vehicle implements truckBed, Loadable<Vehicle
         this.vehicleCollection = new LinkedList<>();
     }
 
-    public boolean isBedRaised(){return bedRaised;}               //only for testing (MIGHT CHANGE, we dont want to implement code only for testing)
-    public int collectionSize(){return vehicleCollection.size();} // ----||-----
+    public boolean isBedRaised(){return bedRaised;}
+    public int collectionSize(){return vehicleCollection.size();}
     public boolean collectionContains(Vehicle vehicle){return vehicleCollection.contains(vehicle);}
 
     @Override
@@ -27,8 +27,7 @@ public class TransporterV2 extends Vehicle implements truckBed, Loadable<Vehicle
     public void load(Vehicle vehicle) {
         if(canLoad(vehicle)){
             vehicleCollection.add(vehicle);
-            vehicle.setX(this.getX());
-            vehicle.setY(this.getY());
+            updatePosition(vehicle);
         }else{
             System.out.print("loading requirements not met.");
         }
@@ -47,7 +46,7 @@ public class TransporterV2 extends Vehicle implements truckBed, Loadable<Vehicle
     }
 
     @Override
-    public void raiseBed() {         //gör raise och lower till EN metod???
+    public void raiseBed() {
         if(isMoving()){
             System.out.print("No can do");
         }else{
@@ -69,9 +68,13 @@ public class TransporterV2 extends Vehicle implements truckBed, Loadable<Vehicle
         super.move();
 
         for(Vehicle vehicle : vehicleCollection) {
-            vehicle.setX(this.getX());
-            vehicle.setY(this.getY());
+            updatePosition(vehicle);
         }
+    }
+
+    private void updatePosition(Vehicle vehicle){
+        vehicle.setX(this.getX());
+        vehicle.setY(this.getY());
     }
 
     //loading requiremnts

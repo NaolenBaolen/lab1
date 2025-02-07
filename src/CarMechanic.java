@@ -1,20 +1,20 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public abstract class CarMechanic implements Loadable<Vehicle> {
+public abstract class CarMechanic<T extends Vehicle> implements Loadable<T> {
     private final int maxCap;
-    private LinkedList<Vehicle> vehicleIn;
-    private final List<String> acceptedModels;
+    private LinkedList<T> vehicleIn;
+//    private final List<String> acceptedModels;
 
-    public CarMechanic(int maxCap, List<String> acceptedModels){
+    public CarMechanic(int maxCap){
         this.maxCap = maxCap;
         this.vehicleIn = new LinkedList<>();
-        this.acceptedModels = acceptedModels;
+        //this.acceptedModels = acceptedModels;
     }
 
 
     @Override
-    public void load(Vehicle vehicle) {
+    public void load(T vehicle) {
         if(requirementsMet(vehicle) && !full()){
             vehicleIn.add(vehicle);
         }else{
@@ -26,15 +26,15 @@ public abstract class CarMechanic implements Loadable<Vehicle> {
     @Override
     public void unload() {
         if(!vehicleIn.isEmpty()){
-            Vehicle vehicle = vehicleIn.remove();
+            vehicleIn.remove();
             //staticly be able to now that all the vehicles that are brougth out are specified model
         }else{
             System.out.print("No vehicles in right now.");
         }
     }
 
-    private boolean requirementsMet(Vehicle vehicle){
-        return !full() && acceptedModels.contains(vehicle.getModelName());
+    private boolean requirementsMet(T vehicle){
+        return !full(); //&& acceptedModels.contains(vehicle.getModelName());
     }
 
     private boolean full(){

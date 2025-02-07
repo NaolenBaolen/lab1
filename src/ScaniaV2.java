@@ -10,6 +10,8 @@ public class ScaniaV2 extends Vehicle implements truckBed {
         this.bedRaised = false;
     }
 
+    public double getBedAngle(){return bedAngle;}
+
     @Override
     public double speedFactor() {
         return getEnginePower() * 0.01;
@@ -40,6 +42,15 @@ public class ScaniaV2 extends Vehicle implements truckBed {
         } else{
             bedAngle = Math.max(bedAngle - amount , 0);
             bedRaised = bedAngle > 0;
+        }
+    }
+
+    @Override
+    public void move(){
+        if(!bedRaised){
+            super.move();
+        }else{
+            System.out.print("Lower bed to move.");
         }
     }
 }

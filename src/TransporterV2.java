@@ -91,7 +91,7 @@ public class TransporterV2 extends Vehicle implements truckBed, Loadable<Vehicle
     }
 
     private boolean inProximity(Vehicle vehicle){
-        return distToTransport(vehicle) <= minProxi;             //make a minDist variable somewhere?
+        return distToTransport(vehicle) <= minProxi;
     }
 
     private double distToTransport(Vehicle vehicle){

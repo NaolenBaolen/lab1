@@ -32,7 +32,7 @@ public class ScaniaV2 extends Vehicle implements truckBed {
             System.out.print("Can not raise while moving");
         }else{
             bedAngle = Math.min(bedAngle + amount, 70);
-            bedRaised = bedAngle > 0;   //bedRaisaed = true for all values except 0
+            bedRaised = bedAngle > 0;
         }
     }
 

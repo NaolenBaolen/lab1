@@ -53,11 +53,11 @@ class TransporterV2Test {
         transporter.load(vehicle1);
         transporter.lowerBed();
         transporter.unload();
-        assertEquals(1, transporter.collectionSize());
+        assertEquals(1, transporter.collectionSize()); //can not unload when bed not raised
 
         transporter.raiseBed();
         transporter.unload();
-        assertEquals(0, transporter.collectionSize());
+        assertEquals(0, transporter.collectionSize()); //can unload now
     }
 
     @Test
@@ -65,10 +65,10 @@ class TransporterV2Test {
         transporter.raiseBed();
         transporter.load(vehicle1);
         transporter.load(vehicle2);
-        assertEquals(2, transporter.collectionSize());
+        assertEquals(2, transporter.collectionSize());    //load vehicle 1 and 2
 
-        transporter.unload();
-        assertFalse(transporter.collectionContains(vehicle2));
+        transporter.unload();                                      //unload
+        assertFalse(transporter.collectionContains(vehicle2));   //vehicle 2 removed first
         assertTrue(transporter.collectionContains(vehicle1));
 
     }
